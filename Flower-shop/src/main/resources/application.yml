@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    group:
+      local:
+        - api
+      dev:
+        - mysql
+        - api
+      prod:
+        - mysql
+        - api
+    active: dev

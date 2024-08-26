@@ -1,4 +1,4 @@
-package com.oasis.flowershop.domain.chat.application.model;
+package com.oasis.flowershop.domain.chat.application.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,14 +9,14 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
-public class ChatModel {
+@Builder
+public class ChatRoomResponse {
 
-    private Long chatId;
-    private Long member;
+    private Long id;
     private String title;
-    private List<Long> tags;
+    private Long member;
+    private List<String> tags;
     private String imageURL;
 
 }

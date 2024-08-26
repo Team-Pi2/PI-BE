@@ -1,6 +1,5 @@
 package com.oasis.flowershop.domain.chat.persistence;
 
-
 import com.oasis.flowershop.common.persistence.BaseEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -15,22 +14,25 @@ import javax.persistence.*;
 @ToString
 @SuperBuilder(toBuilder = true)
 @Entity
-@Table(name = ChatEntity.ENTITY_PREFIX)
-@SQLDelete(sql = "UPDATE chat SET is_deleted=true where chat_id=?")
+@Table(name = TagEntity.ENTITY_PREFIX)
+@SQLDelete(sql = "UPDATE tag SET is_deleted=true where tag_id=?")
 @Where(clause = "is_deleted=false")
-public class ChatEntity extends BaseEntity {
+public class TagEntity extends BaseEntity {
 
-    public static final String ENTITY_PREFIX = "chat";
+    public static final String ENTITY_PREFIX = "tag";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = ENTITY_PREFIX+ "_id", nullable = false)
+    @Column(name = ENTITY_PREFIX + "_id", nullable = false)
+    private Long tagId;
+
+    @Column(name = ENTITY_PREFIX + "_chat_id", nullable = false)
     private Long chatId;
 
     @Column(name = ENTITY_PREFIX + "_name", nullable = false)
-    private String title;
+    private String tagName;
 
-    @Column(name = ENTITY_PREFIX + "_imageURL", nullable = false)
-    private String imageURL;
-
+    public static TagEntity of(Long chatId, String tagName){
+        return TagEntity.builder().chatId(chatId).tagName(tagName).build();
+    }
 }

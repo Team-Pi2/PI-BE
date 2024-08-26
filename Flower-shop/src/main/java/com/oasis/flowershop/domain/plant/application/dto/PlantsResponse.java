@@ -1,4 +1,4 @@
-package com.oasis.flowershop.domain.chat.application.dto;
+package com.oasis.flowershop.domain.plant.application.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Builder
-public class ChatRoomsResponse {
+public class PlantsResponse {
 
-    private List<ChatRoomResponse> chatInfos;
+    private List<PlantResponse> plantInfos;
 
 }

@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@Getter
+@AllArgsConstructor
 @Builder
-public class ChatRoomsResponse {
+@Getter
+public class CreateChatRoomRequest {
 
-    private List<ChatRoomResponse> chatInfos;
+    private String title;
+    private String image;
+    private List<String> tags;
 
 }

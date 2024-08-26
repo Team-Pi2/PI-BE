@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/orders")
 public class OrderController {
 
-    private final OrderResponseConverter responseConverter;
+    private final OrderResponseConverter orderResponseConverter;
     private final OrderListUseCase orderListUseCase;
 
     @GetMapping
@@ -32,7 +32,7 @@ public class OrderController {
     ){
         List<OrderModel> orders = orderListUseCase.findAll(category);
         OrderListResponse response = OrderListResponse.builder()
-                .storeInfos(orders.stream().map(responseConverter::from).collect(Collectors.toList())).build();
+                .storeInfos(orders.stream().map(orderResponseConverter::from).collect(Collectors.toList())).build();
         return ApiResponseGenerator.success(response, HttpStatus.OK, MessageCode.GET);
     }
 
